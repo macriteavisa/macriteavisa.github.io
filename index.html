@@ -63,8 +63,8 @@ layout: compress
                                             {% capture social_text %}#macrilodice {{ post.title }} - {{social_url}}{% endcapture %}
 
                                             <a href="http://twitter.com/intent/tweet?text={{social_text | cgi_escape}}"><i class="fa fa-twitter-square"></i></a>
-                                            <a href="#"><i class="fa fa-instagram"></i></a>
                                             <a href="http://www.facebook.com/sharer/sharer.php?u={{social_url}}&t={{social_text | cgi_escape}}"><i class="fa fa-facebook-square"></i></a>
+                                            <a href="http://www.linkedin.com/shareArticle?mini=true&url={{social_url | cgi_escape}}&title={{post.title | cgi_escape}}&summary={{social_text|cgi_escape}}&source={{'https://macriteavisa.com' | cgi_escape}}"><i class="fa fa-linkedin-square"></i></a>
                                         </div>
                                     </h2>
                                     <p class="card__subtitle">{{ post.subtitle }}</p>
