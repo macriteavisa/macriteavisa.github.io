@@ -3,6 +3,6 @@ title: "El CEPO"
 author: "xaiki"
 avatar: "img/authors/xaiki.png"
 video_id: "GOJoMa93aT4"
-date: 2015-11-17 18:29:25-03:00
+date: 2015-11-17 19:01:49-03:00
 video_args: "GOJoMa93aT4"
 ---
