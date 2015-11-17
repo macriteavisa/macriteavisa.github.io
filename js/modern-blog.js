@@ -13,6 +13,7 @@ var demo = (function(window, undefined) {
     card: '.card',
     cardImage: '.card__image',
     cardClose: '.card__btn-close',
+    video: '.video'
   };
 
   /**
@@ -46,9 +47,9 @@ var demo = (function(window, undefined) {
     var pattern = Trianglify({
       width: window.innerWidth,
       height: window.innerHeight,
-      cell_size: 90,
+      cell_size: 70,
       variance: 1,
-      stroke_width: 1,
+      stroke_width: 1.51,
       x_colors: 'random',
       y_colors: 'random'
     }).svg(); // Render as SVG.
@@ -57,6 +58,29 @@ var demo = (function(window, undefined) {
 
     _bindCards();
   };
+
+  function _loadYTPlayer() {
+    // Load the IFrame Player API code asynchronously.
+    var tag = document.createElement('script');
+
+    tag.src = "https://www.youtube.com/iframe_api";
+    var firstScriptTag = document.getElementsByTagName('script')[0];
+    firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+
+    // Replace the 'ytplayer' element with an <iframe> and
+    // YouTube player after the API code downloads.
+    var player;
+
+    function onYouTubeIframeAPIReady() {
+      console.log ('ready')
+      player = new YT.Player('player', {
+        height: '390',
+        width: '640',
+        videoId: 'M7lc1UVf-VE',
+
+      });
+    }
+  }
 
   /**
    * Store path elements, map coordinates and sizes.
@@ -140,7 +164,8 @@ var demo = (function(window, undefined) {
     if (!card.isOpen) {
       // Open sequence.
 
-      _setPatternBgImg(e.target);
+      // _setPatternBgImg(e.target);
+      _setVideoPlayerBg(e.target);
 
       sequence.add(tweenOtherCards);
       sequence.add(card.openCard(_onCardMove), 0);
@@ -152,6 +177,9 @@ var demo = (function(window, undefined) {
       var position = closeCard.duration() * 0.8; // 80% of close card tween.
 
       sequence.add(closeCard);
+      sequence.add(function () {
+            $(SELECTORS.video).html('')
+      })
       sequence.add(tweenOtherCards, position);
     }
 
@@ -188,6 +216,32 @@ var demo = (function(window, undefined) {
   };
 
   /**
+   * Set a youtube video as a background player.
+   * @param {ELement} image the clicked SVG Image Element.
+   * @private
+   */
+  function _setVideoPlayerBg(image) {
+    var videoId = $(image).attr('xlink:id');
+    var videoArgs = $(image).attr('xlink:args');
+
+    videoArgs = videoArgs?[videoArgs]:[]
+
+    var args = {
+      autoplay: 1,
+      color: 'white',
+      control: 0,
+      enablejsapi: 1,
+      modestbranding: 1
+    }
+
+    $(SELECTORS.video).html('<iframe title="YouTube video player" width="100%" height="100%" src="http://www.youtube.com/embed/' + videoId + '?' + videoArgs.concat(Object.keys(args).map(function (k) {
+                              return k + '=' + args[k]
+                            })).join('&')
+                            + '" frameborder="0" allowfullscreen></iframe>')
+  }
+
+
+  /**
    * Add card image to pattern background.
    * @param {Element} image The clicked SVG Image Element.
    * @private
@@ -208,7 +262,7 @@ var demo = (function(window, undefined) {
    */
   function _onCardMove(track) {
 
-    var radius = track.width / 2;
+    var radius = track.width / 1.7;
 
     var center = {
       x: track.x,
