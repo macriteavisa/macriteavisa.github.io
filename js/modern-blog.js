@@ -50,7 +50,7 @@ var demo = (function(window, undefined) {
       cell_size: 70,
       variance: 1,
       stroke_width: 1.51,
-      x_colors: 'YlOrBr',
+      x_colors: 'random',
       y_colors: 'match_x'
     }).svg(); // Render as SVG.
 
