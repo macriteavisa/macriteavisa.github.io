@@ -268,8 +268,16 @@ a:focus {
 	color: #4f4c4c;
 }
 
-.body .header h1 span {
+.body .header h1 span, footer {
 	color: #4f4c4c;
+}
+
+footer {
+    position: relative;
+    bottom: 20px;
+    left: calc(80% - 150px);
+    margin: 20px;
+    padding: 20px;
 }
 
 .hidden {
