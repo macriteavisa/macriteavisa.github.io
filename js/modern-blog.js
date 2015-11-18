@@ -262,11 +262,11 @@ var demo = (function(window, undefined) {
    */
   function _onCardMove(track) {
 
-    var radius = track.width / 1.2;
+    var radius = track.width / 2;
 
     var center = {
       x: track.x,
-      y: track.y
+      y: track.y + 200
     };
 
     polygonMap.points.forEach(function(point, i) {
