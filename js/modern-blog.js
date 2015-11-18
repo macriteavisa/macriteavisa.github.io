@@ -266,7 +266,7 @@ var demo = (function(window, undefined) {
 
     var center = {
       x: track.x,
-      y: track.y + 200
+      y: track.y + 100
     };
 
     polygonMap.points.forEach(function(point, i) {
