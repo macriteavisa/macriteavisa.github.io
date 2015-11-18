@@ -262,7 +262,7 @@ var demo = (function(window, undefined) {
    */
   function _onCardMove(track) {
 
-    var radius = track.width / 1.7;
+    var radius = track.width / 1.2;
 
     var center = {
       x: track.x,
