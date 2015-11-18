@@ -274,8 +274,8 @@ a:focus {
 
 footer {
     position: relative;
-    bottom: 20px;
-    left: calc(80% - 150px);
+    bottom: 0px;
+    left: calc(80% - 180px);
     margin: 20px;
     padding: 20px;
 }
